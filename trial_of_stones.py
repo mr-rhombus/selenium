@@ -11,7 +11,8 @@ def input_and_press_enter(input_selector, input_text, button_selector):
     input = browser.find_element(By.CSS_SELECTOR, input_selector)
     input.send_keys(input_text)
     button = browser.find_element(By.CSS_SELECTOR, button_selector)
-    button.send_keys(Keys.ENTER)
+    # button.send_keys(Keys.ENTER)
+    button.click()
 
 
 ## Riddle of Stone
@@ -49,6 +50,12 @@ input3_selector = "input[id='r3Input']"
 answer3_selector = "button[id='r3Butn']"
 input_and_press_enter(input3_selector, richest_merchant, answer3_selector)
 
-print('First browser automation complete!')
 
-# TODO: Perform an 'assert' to verify that the message 'Trial Complete' has been displayed
+## Press "Check Answers"
+check_answers_btn = browser.find_element(By.CSS_SELECTOR, "button#checkButn")
+check_answers_btn.click()
+
+success_text = browser.find_element(By.CSS_SELECTOR, 'div#trialCompleteBanner > h4').text
+assert success_text == 'Trial Complete'
+
+print('First browser automation complete!')
