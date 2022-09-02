@@ -3,7 +3,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-browser = webdriver.Chrome(ChromeDriverManager().install())
+# browser = webdriver.Chrome(ChromeDriverManager().install())
+# Add "drivers" dir to your PATH to have the Chrome webdriver "pre-loaded"
+# See section 1, lecture 6 for a walkthrough
+browser = webdriver.Chrome()
 browser.get('https://techstepacademy.com/trial-of-the-stones')
 
 # Define a function to solves riddles 1 and 2
