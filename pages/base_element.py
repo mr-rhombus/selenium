@@ -3,7 +3,8 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class BaseElement:
+
+class BaseElement(object):
     def __init__(self, driver, by, value):
         self.driver = driver
         self.value = value
@@ -19,6 +20,9 @@ class BaseElement:
         element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.locator))
         # self.driver.find_element(self.by, self.locator)  # Unsophisticated way
         self.web_element = element
+
+    def input_text(self, text):
+        self.web_element.send_keys(text)
 
     def click(self):
         # Make sure element (button) is clickable before clicking it
